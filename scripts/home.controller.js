@@ -10,8 +10,10 @@ function HomeController($http) {
   const vm = this;
 
   vm.types = [];
-  vm.skills = $http.get('content/skills.json');
-  vm.experiences = $http.get('content/experiences.json');
+  vm.skills = $http.get('content/skills.json').success((response) => {
+    return response.data
+  });
+  vm.experiences = $http.get('content/experiences.json').success((response) => response.data);
 
   vm.filter = (type) => {
     if(_.contains(vm.types, type)) {
