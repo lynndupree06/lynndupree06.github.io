@@ -105,3 +105,13 @@ section .section-wrapper {
 #skills ul li {
   margin: 10px;
 }
+
+#skills ul li .progress-chart svg {
+  margin-top: 20px;
+}
+
+#skills ul li div {
+  text-align: center;
+  margin-top: 5px;
+  font-size: 20px;
+}
