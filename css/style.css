@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Handlee', cursive;
+}
+
+h1 {
+  font-size: 40px;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-size: 28px;
+  margin-top: 0;
+  color: #FFD281;
+}
+
+section .section-wrapper {
+  padding: 25px 50px 25px 50px;
+  text-align: center;
+  margin: auto;
+}
+
+/**
+  INTRODUCITON
+***********************************************/
+
+#intro {
+    background-color: #FF672A;
+    color: #FFFFFF;
+}
+
+#intro img {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+}
+
+#intro .social-media a {
+  color: #FFA581;
+}
+
+#intro .social-media i {
+  margin: auto 10px;
+}
+
+/**
+  SKILLS
+***********************************************/
+
+#skills {
+  background-color: #FFB32A;
+  color: #FFFFFF;
+}
+
+#skills .search-panel {
+  position: relative;
+}
+
+#skills .search-panel i {
+  position: absolute;
+  top: 15px;
+  font-size: 20px;
+}
+
+#skills .search-panel input {
+  height: 40px;
+  font-size: 30px;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid #FFFFFF;
+  margin-bottom: 20px;
+  color: #FFFFFF;
+  margin-left: 35px;
+}
+
+#skills .search-panel .filters {
+  flex: 100%;
+}
+
+#skills ul.filters li {
+  background-color: #FF8453;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+#skills ul.filters li.selected {
+  background-color: #FF672A;
+}
+
+#skills ul.filters li a {
+  text-decoration: none;
+  color: #FFFFFF;
+}
+
+#skills ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+#skills ul li {
+  margin: 10px;
+}
