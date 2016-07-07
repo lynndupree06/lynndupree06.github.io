@@ -60,12 +60,23 @@
   <section id="experience">
     <div class="section-wrapper">
       <h1>Experience</h1>
-      <div class="job" ng-repeat="experience in vm.experiences">
-        <h2>{{experience.company}}</h2>
-        <h3>{{experience.location}}</h3>
-        <h4>{{experience.start}} - {{experience.end}}</h4>
-        <div class="description">{{experience.description}}</div>
-      </div>
+
+      <ul id='timeline'>
+        <li class='work' ng-repeat="experience in vm.experiences | orderBy:start:reverse track by $index">
+          <input class='radio' id='work{{$index}}' name='works' type='radio'>
+          <div class="relative">
+            <label for='work{{$index}}'>
+              <strong>{{experience.company}}</strong> - {{experience.location}}
+            </label>
+            <span class='date'>{{experience.start | date:'MMM yyyy'}}</span>
+            <span class='circle'></span>
+          </div>
+          <div class='content'>
+            <p class="title">{{experience.title}}</p>
+            <p>{{experience.description}}</p>
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
 
