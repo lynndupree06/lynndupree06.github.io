@@ -20,6 +20,8 @@
         <a href="http://facebook.com/jessica.brazelton" target="_blank"><i class="fa fa-facebook-square fa-3x"></i></a>
         <a href="http://instagram.com/lynndupree06" target="_blank"><i class="fa fa-instagram fa-3x"></i></a>
         <a href="http://linkedin.com/in/jbrazelton" target="_blank"><i class="fa fa-linkedin-square fa-3x"></i></a>
+        <a href="http://github.com/lynndupree06" target="_blank"><i class="fa fa-github-square fa-3x"></i></a>
+        <a href="http://technicallyher.com" target="_blank"><i class="fa fa-wordpress fa-3x"></i></a>
       </div>
     </div>
   </section>
@@ -58,6 +60,12 @@
   <section id="experience">
     <div class="section-wrapper">
       <h1>Experience</h1>
+      <div class="job" ng-repeat="experience in vm.experiences">
+        <h2>{{experience.company}}</h2>
+        <h3>{{experience.location}}</h3>
+        <h4>{{experience.start}} - {{experience.end}}</h4>
+        <div class="description">{{experience.description}}</div>
+      </div>
     </div>
   </section>
 
