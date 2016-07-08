@@ -293,3 +293,12 @@ label {
     display: none;
   }
 }
+
+/* -------------------------------------
+ *  EDUCATION
+ * ------------------------------------- */
+
+#education {
+  background-color: #EA2786;
+  color: #FFFFFF;
+}
