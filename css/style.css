@@ -229,7 +229,7 @@ label {
   position: absolute;
   z-index: 100;
   cursor: pointer;
-  top: 20px;
+  top: 10px;
   left: 10px;
   transition: transform 0.2s linear;
 }
