@@ -244,10 +244,10 @@ label {
 }
 .radio:checked + .relative .circle {
   background: #E99600;
-  top: 25%;
+  top: 12%;
 }
 .radio:checked + .relative .date {
-  top: 25%;
+  top: 12%;
 }
 .radio:checked ~ .content {
   max-height: 180px;
