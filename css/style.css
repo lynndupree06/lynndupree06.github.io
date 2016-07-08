@@ -165,11 +165,11 @@ section .section-wrapper {
 .circle {
   margin-top: -10px;
   top: 50%;
-  left: -25px;
+  left: -22px;
   width: 10px;
   height: 10px;
   background: #eee9dc;
-  border: 5px solid #eee9dc;
+  border: 3px solid #eee9dc;
   border-radius: 50%;
   display: block;
   position: absolute;
@@ -244,10 +244,10 @@ label {
 }
 .radio:checked + .relative .circle {
   background: #E99600;
-  top: 20%;
+  top: 18%;
 }
 .radio:checked + .relative .date {
-  top: 20%;
+  top: 18%;
 }
 .radio:checked ~ .content {
   max-height: 180px;
