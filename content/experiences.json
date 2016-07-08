@@ -1,65 +1,56 @@
-[
-  {
-    "company": "ThoughtWorks",
-    "location": "Dallas, TX, USA",
-    "start": "1389592800000",
-    "end": "Present",
-    "description": "Worked in several industries to include Health Care, Aviation, Government, Finance, and Non-profit. I worked closely with clients to build quality software through agile practices, continuous integration, and test driven development. Technologies used include: Angular, Javascript, Backbone MVC, Objective-C, Java, Spring MVC, Ruby on Rails, MySQL, and PostgreSQL."
-  },
-  {
-    "company": "Suncorp Group",
-    "title": "Software Developer",
-    "location": "Sydney, NSW, Australia",
-    "start": "1335848400000",
-    "end": "1367384400000",
-    "description": "Worked within an Agile software development team as a software developer. Contributed to front end web development for Java applications and created native mobile applications across multiple platforms using Xamarin technologies. Also, developed small enhancements to multiple web	applications for personal insurance brands that brought large business value."
-  },
-  {
-    "company": "Ingage Networks",
-    "title": "Web Developer",
-    "location": "Atlanta, GA, USA",
-    "start": "1304226000000",
-    "end": "1312174800000",
-    "description": "Helped implement a new document sharing platform built inside a web application. This included creating unit tests and front end development while working in an agile environment. The technologies used include: Visual Studio, C#, JUnit, Javascript, HTML, and ASP.NET MVC."
-  },
-  {
-    "company": "John Hopkins University Applied Physics Laboratory",
-    "title": "Software Developer",
-    "location": "Laurel, MD, USA",
-    "start": "1272690000000",
-    "end": "1280638800000",
-    "description": "Implemented a tool to display backend data in a graphical form. This included creating a GUI for the user to input data, querying a database based off of the users input, and displaying data from the database onto four different two dimensional graphs. In addition to that, created a geographical interface to display that same data but onto a map. This interface had a timer that while running, the information on the map would change based of of the current time, and display the relevant data, based on that given time, from the database. The technologies used include: Eclipse, Java, iBatis, and OpenMap API."
-  },
-  {
-    "company": "Volt",
-    "title": "Microsoft Student Partner",
-    "location": "Tuskegee, AL, USA",
-    "start": "1217566800000",
-    "end": "1272690000000",
-    "description": "Planned, organized and executed launch events, tech-talks and other activities. While on the campus of Tuskegee University, acted as the voice of Microsoft, by interacting with students and faculty and assisted students with the use of Microsoft technologies."
-  },
-  {
-    "company": "Xerox Corporation",
-    "title": "Web Developer",
-    "location": "Webster, NY, USA",
-    "start": "1241154000000",
-    "end": "1249102800000",
-    "description": "Helped implement a new internal web application for submitting software builds. This included working on a Scrum team, creating the front end interface, and querying the database to populate the page with content. The technologies used include: IntelliJ, Java, HTML, CSS, Hibernate and Google Web Toolkit."
-  },
-  {
-    "company": "Lockheed Martin",
-    "title": "Software Developer",
-    "location": "Fairfax, VA, USA",
-    "start": "1209618000000",
-    "end": "1217566800000",
-    "description": "Helped implement a new social interacting tool for government intelligence agencies. This included working on a decision mapping application, an interactive Google map interface, and a detailed user guide of how to use the overall system. The technologies used include: Eclipse, Java and Javascript."
-  },
-  {
-    "company": "Jet Propulsion Laboratory",
-    "title": "Web Developer",
-    "location": "Pasadena, CA, USA",
-    "start": "1177995600000",
-    "end": "1185944400000",
-    "description": "Implemented a website and wiki site for the Multi-Mission (MGSS) Instrument Operations Subsystem (IOS) team. This included setting up a server, gathering content from relevant team members, and creating front end interface. Furthermore, I was instrumental in introducing a more intuitive and relevant website for my team. The technologies used include: HTML, CSS, and Tomcat."
-  }
-]
+[{
+	"company": "ThoughtWorks",
+	"location": "Dallas, TX, USA",
+	"start": "1389592800000",
+	"end": "Present",
+	"description": "Worked in several industries to include Health Care, Aviation, Government, Finance, and Non-profit. I worked closely with clients to build quality software through agile practices, continuous integration, and test driven development. Technologies used include: Angular, Javascript, Backbone MVC, Objective-C, Java, Spring MVC, Ruby on Rails, MySQL, and PostgreSQL."
+}, {
+	"company": "Suncorp Group",
+	"title": "Software Developer",
+	"location": "Sydney, NSW, Australia",
+	"start": "1335848400000",
+	"end": "1367384400000",
+	"description": "Worked within an Agile software development team as a software developer. Contributed to front end web development for Java applications and created native mobile applications across multiple platforms using Xamarin technologies. Also, developed small enhancements to multiple web applications for personal insurance brands that brought large business value."
+}, {
+	"company": "Ingage Networks",
+	"title": "Web Developer",
+	"location": "Atlanta, GA, USA",
+	"start": "1304226000000",
+	"end": "1312174800000",
+	"description": "Helped implement a new document sharing platform built inside a web application. This included creating unit tests and front end development while working in an agile environment. The technologies used include: Visual Studio, C#, JUnit, Javascript, HTML, and ASP.NET MVC."
+}, {
+	"company": "John Hopkins University Applied Physics Laboratory",
+	"title": "Software Developer",
+	"location": "Laurel, MD, USA",
+	"start": "1272690000000",
+	"end": "1280638800000",
+	"description": "Implemented a tool to display backend data in a graphical form. This included creating a GUI for the user to input data, querying a database based off of the users input, and displaying data from the database onto four different two dimensional graphs. In addition to that, created a geographical interface to display that same data but onto a map. This interface had a timer that while running, the information on the map would change based of of the current time, and display the relevant data, based on that given time, from the database. The technologies used include: Eclipse, Java, iBatis, and OpenMap API."
+}, {
+	"company": "Volt",
+	"title": "Microsoft Student Partner",
+	"location": "Tuskegee, AL, USA",
+	"start": "1217566800000",
+	"end": "1272690000000",
+	"description": "Planned, organized and executed launch events, tech-talks and other activities. While on the campus of Tuskegee University, acted as the voice of Microsoft, by interacting with students and faculty and assisted students with the use of Microsoft technologies."
+}, {
+	"company": "Xerox Corporation",
+	"title": "Web Developer",
+	"location": "Webster, NY, USA",
+	"start": "1241154000000",
+	"end": "1249102800000",
+	"description": "Helped implement a new internal web application for submitting software builds. This included working on a Scrum team, creating the front end interface, and querying the database to populate the page with content. The technologies used include: IntelliJ, Java, HTML, CSS, Hibernate and Google Web Toolkit."
+}, {
+	"company": "Lockheed Martin",
+	"title": "Software Developer",
+	"location": "Fairfax, VA, USA",
+	"start": "1209618000000",
+	"end": "1217566800000",
+	"description": "Helped implement a new social interacting tool for government intelligence agencies. This included working on a decision mapping application, an interactive Google map interface, and a detailed user guide of how to use the overall system. The technologies used include: Eclipse, Java and Javascript."
+}, {
+	"company": "Jet Propulsion Laboratory",
+	"title": "Web Developer",
+	"location": "Pasadena, CA, USA",
+	"start": "1177995600000",
+	"end": "1185944400000",
+	"description": "Implemented a website and wiki site for the Multi-Mission (MGSS) Instrument Operations Subsystem (IOS) team. This included setting up a server, gathering content from relevant team members, and creating front end interface. Furthermore, I was instrumental in introducing a more intuitive and relevant website for my team. The technologies used include: HTML, CSS, and Tomcat."
+}]
