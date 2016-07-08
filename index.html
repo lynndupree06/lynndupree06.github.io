@@ -59,20 +59,34 @@
 
   <section id="experience">
     <div class="section-wrapper">
-      <h1>Experience</h1>
+      <h1>My Journey</h1>
 
-      <ul id='timeline'>
-        <li class='work' ng-repeat="experience in vm.experiences | orderBy:start:reverse track by $index">
-          <input class='radio' id='work{{$index}}' name='works' type='radio'>
+      <ul id='timeline' style="height: {{vm.yearList.length*80}}px;">
+        <li class='work'
+            style="top: {{$index*70}}px;"
+            ng-repeat="year in vm.yearList track by $index">
+          <div class="relative">
+            <span class='date'>{{year}}</span>
+            <span class='circle'></span>
+          </div>
+          <div class='content'></div>
+        </li>
+        <li class='work'
+            style="top: {{vm.getPosition(experience.start)}}px;"
+            ng-repeat="experience in vm.experiences track by $index"
+            ng-show="vm.shouldShowExperience(experience)">
+          <input class='radio' id='work{{$index}}' name='works' type='checkbox'
+          ng-click="vm.toggleSelectedExperience(experience)">
           <div class="relative">
             <label for='work{{$index}}'>
               <strong>{{experience.company}}</strong> - {{experience.location}}
             </label>
-            <span class='date'>{{experience.start | date:'MMM yyyy'}}</span>
-            <span class='circle'></span>
+            <span class='date event'>{{vm.getDate(experience.start)}}</span>
+            <span class='circle event'></span>
           </div>
           <div class='content'>
             <p class="title">{{experience.title}}</p>
+            <p class="time">{{experience.start | date:'MMM yyyy'}} - {{experience.end | date:'MMM yyyy'}}</p>
             <p>{{experience.description}}</p>
           </div>
         </li>
@@ -88,6 +102,7 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js" type="text/javascript"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js" type="text/javascript"></script>
   <script src="scripts/app.js"></script>
   <script src="scripts/home.controller.js"></script>
   <script src="scripts/search.filter.js"></script>

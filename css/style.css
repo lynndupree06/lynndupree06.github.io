@@ -123,7 +123,7 @@ section .section-wrapper {
 
 #experience {
   text-align: justify;
-  width: 70%;
+  width: 80%;
   margin: auto;
 }
 
@@ -135,10 +135,12 @@ section .section-wrapper {
   margin: 50px 0 30px 120px;
   padding-left: 10px;
   border-left: 8px solid #eee9dc;
+  position: relative;
+  height: 100%;
 }
 #timeline li {
   margin: 40px 0;
-  position: relative;
+  position: absolute;
 }
 #timeline p {
   margin: 0 0 15px 10px;
@@ -148,10 +150,16 @@ section .section-wrapper {
 .date {
   margin-top: -10px;
   top: 50%;
-  left: -108px;
+  left: -115px;
   font-size: 0.95em;
   line-height: 20px;
   position: absolute;
+  font-weight: bold;
+}
+
+.date.event {
+  left: -50px;
+  color: #777777;
 }
 
 .circle {
@@ -160,11 +168,19 @@ section .section-wrapper {
   left: -25px;
   width: 10px;
   height: 10px;
-  background: #E94200;
+  background: #eee9dc;
   border: 5px solid #eee9dc;
   border-radius: 50%;
   display: block;
   position: absolute;
+}
+
+.circle.event {
+  left: -18px;
+  width: 8px;
+  height: 8px;
+  border: none;
+  background: #E94200;
 }
 
 .content {
@@ -174,14 +190,12 @@ section .section-wrapper {
   border-width: 2px;
   border-style: solid;
   border-radius: 0.5em;
-  position: relative;
 }
 .content:before, .content:after {
   content: "";
   width: 0;
   height: 0;
   border: solid transparent;
-  position: absolute;
   pointer-events: none;
   right: 100%;
 }
@@ -191,7 +205,7 @@ section .section-wrapper {
   top: 50%;
   margin-top: -10px;
 }
-.content:after {
+.content.arrow:after {
   border-right-color: #E94200;
   border-width: 7px;
   top: 50%;
@@ -204,6 +218,10 @@ section .section-wrapper {
   word-break: break-word;
   hyphens: auto;
   overflow: hidden;
+}
+
+#timeline .content p.title {
+  margin-bottom: 0;
 }
 
 label {
@@ -221,11 +239,15 @@ label {
 }
 
 .radio:checked + .relative label {
-  cursor: auto;
+  cursor: pointer;
   transform: translateX(42px);
 }
 .radio:checked + .relative .circle {
   background: #E99600;
+  top: 20%;
+}
+.radio:checked + .relative .date {
+  top: 20%;
 }
 .radio:checked ~ .content {
   max-height: 180px;
