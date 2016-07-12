@@ -41,7 +41,7 @@ function HomeController($http) {
     const yearIdx = vm.yearList.indexOf(year);
     const spacingInterval = yearIntervalHeight / 12;
     const bottomPostion = yearIdx * yearIntervalHeight;
-    return bottomPostion - (spacingInterval * currentDate.month());
+    return bottomPostion - (spacingInterval * (currentDate.month() + 1));
   };
 
   vm.toggleSelectedExperience = (experience) => {
@@ -50,6 +50,10 @@ function HomeController($http) {
     } else {
       vm.selectedExperience = experience;
     }
+  };
+
+  vm.getPresentPosition = () => {
+    return -((70/12) * (moment(new Date()).month() + 1));
   };
 
   vm.shouldShowExperience = (experience) => vm.selectedExperience === experience || vm.selectedExperience === null;

@@ -71,6 +71,13 @@
           </div>
           <div class='content'></div>
         </li>
+        <li class="work present" style="top: {{vm.getPresentPosition()}}px;">
+          <div class="relative">
+            <span class='date'>Present</span>
+            <span class='circle'></span>
+          </div>
+          <div class='content'></div>
+        </li>
         <li class='work'
             style="top: {{vm.getPosition(experience.start)}}px;"
             ng-repeat="experience in vm.experiences track by $index"
