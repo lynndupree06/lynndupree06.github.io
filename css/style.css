@@ -29,12 +29,25 @@ section .section-wrapper {
 #intro {
     background-color: #FF672A;
     color: #FFFFFF;
+    position: relative;
 }
 
-#intro img {
-  width: 200px;
-  height: 200px;
+#intro .image-wrapper {
+  width: 80%;
+  margin: 0 auto;
+  position: absolute;
+  top: 60%;
+  left: 38%;
+}
+
+#intro .image-wrapper img {
+  width: 300px;
   border-radius: 100%;
+  border: 5px solid #FFFFFF;
+}
+
+#intro .section-wrapper {
+  padding-bottom: 80px;
 }
 
 #intro .social-media a {
@@ -52,6 +65,10 @@ section .section-wrapper {
  #about {
    width: 80%;
    margin: auto;
+ }
+
+ #about .section-wrapper {
+   padding-top: 150px;
  }
 
  #about p {
