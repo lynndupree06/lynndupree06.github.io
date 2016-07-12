@@ -46,6 +46,20 @@ section .section-wrapper {
 }
 
 /* -------------------------------------
+ *  ABOUT
+ * ------------------------------------- */
+
+ #about {
+   width: 80%;
+   margin: auto;
+ }
+
+ #about p {
+   text-align: center;
+   font-size: 18px;
+ }
+
+/* -------------------------------------
  *  SKILLS
  * ------------------------------------- */
 
@@ -56,6 +70,8 @@ section .section-wrapper {
 
 #skills .search-panel {
   position: relative;
+  width: 80%;
+  margin: auto;
 }
 
 #skills .search-panel i {
