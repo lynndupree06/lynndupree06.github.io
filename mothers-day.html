@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mother's Day Hibachi Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .receipt-dot { border-bottom: 2px dotted #e5e7eb; flex-grow: 1; margin: 0 8px; position: relative; top: -4px; }
+        /* Custom scrollbar for receipt */
+        #receipt-items::-webkit-scrollbar { width: 4px; }
+        #receipt-items::-webkit-scrollbar-track { background: transparent; }
+        #receipt-items::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-stone-100 min-h-screen pb-12">
+    <div class="max-w-6xl mx-auto px-4 pt-8">
+        <!-- Header -->
+        <div class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-red-800">Mother's Day Hibachi</h1>
+            <p class="text-stone-600 mt-2 font-medium">1290 Flamingo Road • May 9th @ 6:00 PM</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <!-- Left Column: Entry Form -->
+            <div class="lg:col-span-7">
+                <div class="bg-white rounded-2xl shadow-sm p-6 border border-stone-200">
+                    <h2 class="text-xl font-bold text-stone-800 mb-6 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        Guest Order Details
+                    </h2>
+                    
+                    <div id="guest-container" class="space-y-4">
+                        <!-- Guest rows injected here -->
+                    </div>
+
+                    <button onclick="addGuest()" class="w-full mt-6 py-4 bg-stone-900 hover:bg-black text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 shadow-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>
+                        Add Another Guest
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Column: Itemized Receipt -->
+            <div class="lg:col-span-5">
+                <div class="bg-white rounded-2xl shadow-xl p-8 border-t-8 border-red-700 sticky top-8">
+                    <div class="text-center mb-6">
+                        <h2 class="text-2xl font-black uppercase tracking-widest text-stone-800">Itemized Receipt</h2>
+                        <p class="text-stone-400 text-[10px] mt-1 italic uppercase tracking-tighter" id="receipt-date"></p>
+                    </div>
+
+                    <!-- Itemized List -->
+                    <div id="receipt-items" class="space-y-6 mb-8 max-h-[400px] overflow-y-auto pr-2">
+                        <!-- Items injected here -->
+                    </div>
+
+                    <!-- Fees & Totals -->
+                    <div class="border-t border-stone-200 pt-6 space-y-3">
+                        <div class="flex justify-between text-stone-600 text-sm">
+                            <span>Subtotal</span>
+                            <span id="food-subtotal">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-stone-600 text-sm">
+                            <span>Shared Travel Fee</span>
+                            <span id="travel-fee-display">$10.00</span>
+                        </div>
+                        <div class="flex justify-between text-stone-600 text-sm">
+                            <span>Sales Tax (8.25%)</span>
+                            <span id="tax-display">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-stone-600 text-sm">
+                            <span>Gratuity (20%)</span>
+                            <span id="tip-display">$0.00</span>
+                        </div>
+                        <div class="flex justify-between items-end pt-4 mt-2 border-t-2 border-stone-800">
+                            <span class="font-black text-xl text-stone-800 uppercase">Total Owed</span>
+                            <span id="grand-total" class="font-black text-3xl text-red-700">$0.00</span>
+                        </div>
+                    </div>
+
+                    <!-- Payment Call to Action -->
+                    <div class="mt-8 pt-8 border-t border-dashed border-stone-300 text-center">
+                        <p class="text-[10px] font-black text-red-800 uppercase tracking-[0.2em] mb-3">Electronic Payment Preferred</p>
+                        <div class="bg-stone-50 border border-stone-200 p-4 rounded-lg inline-block w-full">
+                            <p class="text-xs text-stone-500 uppercase font-bold tracking-widest mb-1">Zelle To:</p>
+                            <p class="text-xl font-black text-stone-900">kazembe72015@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ADULT_PRICE = 55;
+        const CHILD_PRICE = 30;
+        const EXTRA_PROTEIN_PRICE = 15;
+        const TRAVEL_FEE_SHARE = 10;
+        const TAX_RATE = 0.0825;
+        const TIP_RATE = 0.20;
+
+        document.getElementById('receipt-date').innerText = new Date().toLocaleString();
+
+        function addGuest() {
+            const container = document.getElementById('guest-container');
+            const guestId = `guest-${Date.now()}`;
+            
+            const div = document.createElement('div');
+            div.id = guestId;
+            div.className = "group p-5 bg-stone-50 rounded-xl border border-stone-200 relative transition-all hover:border-stone-400";
+            
+            div.innerHTML = `
+                <button onclick="removeGuest('${guestId}')" class="absolute top-3 right-3 text-stone-300 hover:text-red-500 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+                
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Guest Name</label>
+                        <input type="text" placeholder="Enter name..." oninput="calculate()" class="guest-name w-full p-2 bg-white border border-stone-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none transition-all">
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                        <div>
+                            <label class="block text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Type</label>
+                            <select onchange="calculate()" class="guest-type w-full p-2 bg-white border border-stone-200 rounded-lg outline-none">
+                                <option value="55" data-label="Adult">Adult ($55)</option>
+                                <option value="30" data-label="Child">Child ($30)</option>
+                                <option value="0" data-label="Toddler">Toddler (Free)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Protein 1</label>
+                            <select onchange="calculate()" class="protein-1 w-full p-2 bg-white border border-stone-200 rounded-lg outline-none">
+                                <option value="0" data-label="Chicken">Chicken</option>
+                                <option value="0" data-label="Steak">Steak</option>
+                                <option value="0" data-label="Shrimp">Shrimp</option>
+                                <option value="0" data-label="Salmon">Salmon</option>
+                                <option value="0" data-label="Scallops">Scallops</option>
+                                <option value="0" data-label="Tofu">Tofu</option>
+                                <option value="5" data-label="Filet Mignon">Filet (+$5)</option>
+                                <option value="10" data-label="Lobster Tail">Lobster (+$10)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Protein 2</label>
+                            <select onchange="calculate()" class="protein-2 w-full p-2 bg-white border border-stone-200 rounded-lg outline-none">
+                                <option value="0" data-label="Chicken">Chicken</option>
+                                <option value="0" data-label="Steak">Steak</option>
+                                <option value="0" data-label="Shrimp">Shrimp</option>
+                                <option value="0" data-label="Salmon">Salmon</option>
+                                <option value="0" data-label="Scallops">Scallops</option>
+                                <option value="0" data-label="Tofu">Tofu</option>
+                                <option value="5" data-label="Filet Mignon">Filet (+$5)</option>
+                                <option value="10" data-label="Lobster Tail">Lobster (+$10)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-bold text-red-600 uppercase tracking-widest mb-1">Extra Protein? (+$15)</label>
+                            <select onchange="calculate()" class="extra-protein w-full p-2 bg-white border border-red-200 text-red-800 rounded-lg outline-none">
+                                <option value="0" data-label="None">None</option>
+                                <option value="15" data-label="Chicken">Chicken</option>
+                                <option value="15" data-label="Steak">Steak</option>
+                                <option value="15" data-label="Shrimp">Shrimp</option>
+                                <option value="15" data-label="Salmon">Salmon</option>
+                                <option value="15" data-label="Scallops">Scallops</option>
+                                <option value="15" data-label="Tofu">Tofu</option>
+                                <option value="20" data-label="Filet Mignon">Filet (+$20)</option>
+                                <option value="25" data-label="Lobster Tail">Lobster (+$25)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            container.appendChild(div);
+            calculate();
+        }
+
+        function removeGuest(id) {
+            document.getElementById(id).remove();
+            calculate();
+        }
+
+        function calculate() {
+            let subtotal = 0;
+            const receiptContainer = document.getElementById('receipt-items');
+            receiptContainer.innerHTML = '';
+
+            const guestRows = document.querySelectorAll('#guest-container > div');
+            
+            guestRows.forEach((row, index) => {
+                const nameInput = row.querySelector('.guest-name');
+                const name = nameInput.value.trim() || `Guest ${index + 1}`;
+                const typeSelect = row.querySelector('.guest-type');
+                const p1Select = row.querySelector('.protein-1');
+                const p2Select = row.querySelector('.protein-2');
+                const extraSelect = row.querySelector('.extra-protein');
+
+                const basePrice = parseFloat(typeSelect.value);
+                const p1Price = parseFloat(p1Select.value);
+                const p2Price = parseFloat(p2Select.value);
+                const extraPrice = parseFloat(extraSelect.value);
+                
+                const guestTotal = basePrice + p1Price + p2Price + extraPrice;
+                subtotal += guestTotal;
+
+                // Create Receipt Entry
+                const itemEntry = document.createElement('div');
+                itemEntry.className = "receipt-item animate-in fade-in slide-in-from-right-2 duration-300";
+                
+                const p1Label = p1Select.options[p1Select.selectedIndex].getAttribute('data-label');
+                const p2Label = p2Select.options[p2Select.selectedIndex].getAttribute('data-label');
+                const extraLabel = extraSelect.options[extraSelect.selectedIndex].getAttribute('data-label');
+
+                let detailsHtml = `
+                    <div class="flex justify-between items-end mb-1">
+                        <span class="font-black text-stone-800 tracking-tight">${name.toUpperCase()}</span>
+                        <span class="font-bold text-stone-900">$${guestTotal.toFixed(2)}</span>
+                    </div>
+                    <div class="space-y-0.5 border-l-2 border-stone-100 pl-3 ml-1">
+                        <div class="text-[10px] text-stone-500 uppercase flex justify-between">
+                            <span>${typeSelect.options[typeSelect.selectedIndex].getAttribute('data-label')} Base</span>
+                            <span>$${basePrice.toFixed(2)}</span>
+                        </div>
+                        <div class="text-[10px] text-stone-400 uppercase flex justify-between italic">
+                            <span>• ${p1Label}</span>
+                            <span>${p1Price > 0 ? '+$' + p1Price.toFixed(2) : 'incl.'}</span>
+                        </div>
+                        <div class="text-[10px] text-stone-400 uppercase flex justify-between italic">
+                            <span>• ${p2Label}</span>
+                            <span>${p2Price > 0 ? '+$' + p2Price.toFixed(2) : 'incl.'}</span>
+                        </div>`;
+
+                if(extraPrice > 0) {
+                    detailsHtml += `
+                        <div class="text-[10px] text-red-600 font-bold uppercase flex justify-between pt-1">
+                            <span>+ ADD'L ${extraLabel}</span>
+                            <span>$${extraPrice.toFixed(2)}</span>
+                        </div>`;
+                }
+
+                detailsHtml += `</div>`;
+                itemEntry.innerHTML = detailsHtml;
+                receiptContainer.appendChild(itemEntry);
+            });
+
+            const tax = subtotal * TAX_RATE;
+            const tip = subtotal * TIP_RATE;
+            const total = subtotal + tax + tip + TRAVEL_FEE_SHARE;
+
+            document.getElementById('food-subtotal').innerText = `$${subtotal.toFixed(2)}`;
+            document.getElementById('tax-display').innerText = `$${tax.toFixed(2)}`;
+            document.getElementById('tip-display').innerText = `$${tip.toFixed(2)}`;
+            document.getElementById('grand-total').innerText = `$${total.toFixed(2)}`;
+        }
+
+        // Init
+        // window.onload = addGuest;
+    </script>
+</body>
+</html>
