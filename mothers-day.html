@@ -63,10 +63,6 @@
                             <span id="food-subtotal">$0.00</span>
                         </div>
                         <div class="flex justify-between text-stone-600 text-sm">
-                            <span>Shared Travel Fee</span>
-                            <span id="travel-fee-display">$10.00</span>
-                        </div>
-                        <div class="flex justify-between text-stone-600 text-sm">
                             <span>Sales Tax (8.25%)</span>
                             <span id="tax-display">$0.00</span>
                         </div>
@@ -97,7 +93,6 @@
         const ADULT_PRICE = 55;
         const CHILD_PRICE = 30;
         const EXTRA_PROTEIN_PRICE = 15;
-        const TRAVEL_FEE_SHARE = 10;
         const TAX_RATE = 0.0825;
         const TIP_RATE = 0.20;
 
@@ -249,7 +244,7 @@
 
             const tax = subtotal * TAX_RATE;
             const tip = subtotal * TIP_RATE;
-            const total = subtotal + tax + tip + TRAVEL_FEE_SHARE;
+            const total = subtotal + tax + tip;
 
             document.getElementById('food-subtotal').innerText = `$${subtotal.toFixed(2)}`;
             document.getElementById('tax-display').innerText = `$${tax.toFixed(2)}`;
