@@ -76,6 +76,12 @@
                         </div>
                     </div>
 
+                    <!-- Submit RSVP Button -->
+                    <button onclick="submitRSVP()" class="w-full mt-8 py-4 bg-red-700 hover:bg-red-800 text-white rounded-xl font-black uppercase tracking-widest shadow-lg transform transition active:scale-95 flex items-center justify-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                        Submit RSVP
+                    </button>
+
                     <!-- Payment Call to Action -->
                     <div class="mt-8 pt-8 border-t border-dashed border-stone-300 text-center">
                         <p class="text-[10px] font-black text-red-800 uppercase tracking-[0.2em] mb-3">Electronic Payment Preferred</p>
@@ -250,6 +256,46 @@
             document.getElementById('tax-display').innerText = `$${tax.toFixed(2)}`;
             document.getElementById('tip-display').innerText = `$${tip.toFixed(2)}`;
             document.getElementById('grand-total').innerText = `$${total.toFixed(2)}`;
+        }
+
+        function submitRSVP() {
+            const familyName = document.getElementById('family-name').value.trim();
+            if (!familyName) {
+                alert("Please enter your Family Name first!");
+                return;
+            }
+
+            let bodyText = `Family Name: ${familyName}\n`;
+            bodyText += `Date Submitted: ${new Date().toLocaleString()}\n`;
+            bodyText += `------------------------------------------\n\n`;
+
+            const guestRows = document.querySelectorAll('#guest-container > div');
+            guestRows.forEach((row, index) => {
+                const name = row.querySelector('.guest-name').value.trim() || `Guest ${index + 1}`;
+                const type = row.querySelector('.guest-type').options[row.querySelector('.guest-type').selectedIndex].text;
+                const p1 = row.querySelector('.protein-1').options[row.querySelector('.protein-1').selectedIndex].text;
+                const p2 = row.querySelector('.protein-2').options[row.querySelector('.protein-2').selectedIndex].text;
+                const ex = row.querySelector('.extra-protein').options[row.querySelector('.extra-protein').selectedIndex].text;
+
+                bodyText += `GUEST: ${name}\n`;
+                bodyText += `- Type: ${type}\n`;
+                bodyText += `- Protein 1: ${p1}\n`;
+                bodyText += `- Protein 2: ${p2}\n`;
+                if (ex !== "None") bodyText += `- Extra Protein: ${ex}\n`;
+                bodyText += `\n`;
+            });
+
+            bodyText += `------------------------------------------\n`;
+            bodyText += `Subtotal: ${document.getElementById('food-subtotal').innerText}\n`;
+            bodyText += `Travel Share: ${document.getElementById('travel-fee-display').innerText}\n`;
+            bodyText += `Tax: ${document.getElementById('tax-display').innerText}\n`;
+            bodyText += `Gratuity: ${document.getElementById('tip-display').innerText}\n`;
+            bodyText += `TOTAL OWED: ${document.getElementById('grand-total').innerText}\n\n`;
+            bodyText += `Please remember to Zelle this total to confirm!`;
+
+            const subject = encodeURIComponent(`Hibachi RSVP - ${familyName} Family`);
+            const body = encodeURIComponent(bodyText);
+            window.location.href = `mailto:kazembe72015@gmail.com?subject=${subject}&body=${body}`;
         }
 
         // Init
