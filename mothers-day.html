@@ -8,11 +8,10 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         body { font-family: 'Inter', sans-serif; }
-        .receipt-dot { border-bottom: 2px dotted #e5e7eb; flex-grow: 1; margin: 0 8px; position: relative; top: -4px; }
-        /* Custom scrollbar for receipt */
         #receipt-items::-webkit-scrollbar { width: 4px; }
         #receipt-items::-webkit-scrollbar-track { background: transparent; }
         #receipt-items::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
+        .tip-btn.active { background-color: #991b1b; color: white; border-color: #991b1b; }
     </style>
 </head>
 <body class="bg-stone-100 min-h-screen pb-12">
@@ -20,19 +19,18 @@
         <!-- Header -->
         <div class="text-center mb-10">
             <h1 class="text-4xl font-bold text-red-800">Mother's Day Hibachi</h1>
-            <p class="text-stone-600 mt-2 font-medium">1290 Flamingo Road • May 9th @ 5:00 PM</p>
+            <p class="text-stone-600 mt-2 font-medium">1290 Flamingo Road • May 9th @ 6:00 PM</p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
             <!-- Left Column: Entry Form -->
             <div class="lg:col-span-7">
                 <div class="bg-white rounded-2xl shadow-sm p-6 border border-stone-200">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
-                        <h2 class="text-xl font-bold text-stone-800 mb-6 flex items-center gap-2">
+                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4 border-b border-stone-100 pb-6">
+                        <h2 class="text-xl font-bold text-stone-800 flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                            Guest Order Details
+                            Order Details
                         </h2>
-    
                         <div class="w-full md:w-64">
                             <label class="block text-[10px] font-black text-stone-400 uppercase tracking-widest mb-1">Family Name</label>
                             <input type="text" id="family-name" placeholder="The Millers..." class="w-full p-2 bg-stone-50 border border-stone-200 rounded-lg outline-none focus:ring-2 focus:ring-red-500">
@@ -58,13 +56,11 @@
                         <p class="text-stone-400 text-[10px] mt-1 italic uppercase tracking-tighter" id="receipt-date"></p>
                     </div>
 
-                    <!-- Itemized List -->
-                    <div id="receipt-items" class="space-y-6 mb-8 max-h-[400px] overflow-y-auto pr-2">
+                    <div id="receipt-items" class="space-y-6 mb-8 max-h-[350px] overflow-y-auto pr-2">
                         <!-- Items injected here -->
                     </div>
 
-                    <!-- Fees & Totals -->
-                    <div class="border-t border-stone-200 pt-6 space-y-3">
+                    <div class="border-t border-stone-200 pt-6 space-y-4">
                         <div class="flex justify-between text-stone-600 text-sm">
                             <span>Subtotal</span>
                             <span id="food-subtotal">$0.00</span>
@@ -73,12 +69,31 @@
                             <span>Sales Tax (8.25%)</span>
                             <span id="tax-display">$0.00</span>
                         </div>
-                        <div class="flex justify-between text-stone-600 text-sm">
-                            <span>Gratuity (20%)</span>
-                            <span id="tip-display">$0.00</span>
+                        
+                        <!-- Updated Gratuity UI with 10, 15, 20 options -->
+                        <div class="bg-stone-50 p-4 rounded-xl border border-stone-100 space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs font-bold text-stone-500 uppercase tracking-wider">Gratuity</span>
+                                <span id="tip-display" class="font-bold text-stone-900">$0.00</span>
+                            </div>
+                            
+                            <div class="grid grid-cols-4 gap-2">
+                                <button onclick="setTipType('pct', 10)" id="tip-10" class="tip-btn py-2 text-xs font-bold rounded-lg border border-stone-200 bg-white hover:border-red-400 transition-all">10%</button>
+                                <button onclick="setTipType('pct', 15)" id="tip-15" class="tip-btn py-2 text-xs font-bold rounded-lg border border-stone-200 bg-white hover:border-red-400 transition-all">15%</button>
+                                <button onclick="setTipType('pct', 20)" id="tip-20" class="tip-btn active py-2 text-xs font-bold rounded-lg border border-stone-200 bg-white hover:border-red-400 transition-all">20%</button>
+                                <button onclick="setTipType('custom')" id="tip-custom-btn" class="tip-btn py-2 text-xs font-bold rounded-lg border border-stone-200 bg-white hover:border-red-400 transition-all">Custom</button>
+                            </div>
+
+                            <div id="custom-tip-input-container" class="hidden animate-in fade-in zoom-in-95 duration-200">
+                                <div class="relative">
+                                    <span class="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 font-bold">$</span>
+                                    <input type="number" id="custom-tip-amount" value="0.00" step="1" oninput="calculate()" class="w-full pl-7 pr-3 py-2 bg-white border border-red-200 rounded-lg outline-none focus:ring-2 focus:ring-red-500 font-bold text-stone-800">
+                                </div>
+                            </div>
                         </div>
+
                         <div class="flex justify-between items-end pt-4 mt-2 border-t-2 border-stone-800">
-                            <span class="font-black text-xl text-stone-800 uppercase">Total Owed</span>
+                            <span class="font-black text-xl text-stone-800 uppercase text-xs md:text-sm">Total Owed</span>
                             <span id="grand-total" class="font-black text-3xl text-red-700">$0.00</span>
                         </div>
                     </div>
@@ -89,13 +104,9 @@
                         Submit RSVP
                     </button>
 
-                    <!-- Payment Call to Action -->
-                    <div class="mt-8 pt-8 border-t border-dashed border-stone-300 text-center">
-                        <p class="text-[10px] font-black text-red-800 uppercase tracking-[0.2em] mb-3">Electronic Payment Preferred</p>
-                        <div class="bg-stone-50 border border-stone-200 p-4 rounded-lg inline-block w-full">
-                            <p class="text-xs text-stone-500 uppercase font-bold tracking-widest mb-1">Zelle To:</p>
-                            <p class="text-xl font-black text-stone-900">kazembe72015@gmail.com</p>
-                        </div>
+                    <div class="mt-4 pt-4 border-t border-dashed border-stone-300 text-center">
+                        <p class="text-[10px] font-black text-red-800 uppercase tracking-[0.2em] mb-2">Zelle Payment Info</p>
+                        <p class="text-sm font-bold text-stone-900 bg-stone-100 py-2 rounded border border-stone-200">kazembe72015@gmail.com</p>
                     </div>
                 </div>
             </div>
@@ -103,18 +114,36 @@
     </div>
 
     <script>
-        const ADULT_PRICE = 55;
-        const CHILD_PRICE = 30;
-        const EXTRA_PROTEIN_PRICE = 15;
         const TAX_RATE = 0.0825;
-        const TIP_RATE = 0.20;
+        const HOST_EMAIL = "[your-email@example.com]";
+
+        let currentTipMode = 'pct'; // 'pct' or 'custom'
+        let currentTipValue = 20;
 
         document.getElementById('receipt-date').innerText = new Date().toLocaleString();
+
+        function setTipType(mode, value = 0) {
+            currentTipMode = mode;
+            currentTipValue = value;
+            
+            // UI Updates
+            document.querySelectorAll('.tip-btn').forEach(btn => btn.classList.remove('active'));
+            const customInput = document.getElementById('custom-tip-input-container');
+            
+            if (mode === 'pct') {
+                document.getElementById(`tip-${value}`).classList.add('active');
+                customInput.classList.add('hidden');
+            } else {
+                document.getElementById('tip-custom-btn').classList.add('active');
+                customInput.classList.remove('hidden');
+            }
+            
+            calculate();
+        }
 
         function addGuest() {
             const container = document.getElementById('guest-container');
             const guestId = `guest-${Date.now()}`;
-            
             const div = document.createElement('div');
             div.id = guestId;
             div.className = "group p-5 bg-stone-50 rounded-xl border border-stone-200 relative transition-all hover:border-stone-400";
@@ -123,13 +152,11 @@
                 <button onclick="removeGuest('${guestId}')" class="absolute top-3 right-3 text-stone-300 hover:text-red-500 transition-colors">
                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                 </button>
-                
                 <div class="space-y-4">
                     <div>
                         <label class="block text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Guest Name</label>
-                        <input type="text" placeholder="Enter name..." oninput="calculate()" class="guest-name w-full p-2 bg-white border border-stone-200 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent outline-none transition-all">
+                        <input type="text" placeholder="Enter name..." oninput="calculate()" class="guest-name w-full p-2 bg-white border border-stone-200 rounded-lg focus:ring-2 focus:ring-red-500 outline-none">
                     </div>
-                    
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
                         <div>
                             <label class="block text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Type</label>
@@ -146,8 +173,6 @@
                                 <option value="0" data-label="Steak">Steak</option>
                                 <option value="0" data-label="Shrimp">Shrimp</option>
                                 <option value="0" data-label="Salmon">Salmon</option>
-                                <option value="0" data-label="Scallops">Scallops</option>
-                                <option value="0" data-label="Tofu">Tofu</option>
                                 <option value="5" data-label="Filet Mignon">Filet (+$5)</option>
                                 <option value="10" data-label="Lobster Tail">Lobster (+$10)</option>
                             </select>
@@ -159,22 +184,18 @@
                                 <option value="0" data-label="Steak">Steak</option>
                                 <option value="0" data-label="Shrimp">Shrimp</option>
                                 <option value="0" data-label="Salmon">Salmon</option>
-                                <option value="0" data-label="Scallops">Scallops</option>
-                                <option value="0" data-label="Tofu">Tofu</option>
                                 <option value="5" data-label="Filet Mignon">Filet (+$5)</option>
                                 <option value="10" data-label="Lobster Tail">Lobster (+$10)</option>
                             </select>
                         </div>
                         <div>
-                            <label class="block text-[10px] font-bold text-red-600 uppercase tracking-widest mb-1">Extra Protein? (+$15)</label>
+                            <label class="block text-[10px] font-bold text-red-600 uppercase tracking-widest mb-1">Add'l (+$15)</label>
                             <select onchange="calculate()" class="extra-protein w-full p-2 bg-white border border-red-200 text-red-800 rounded-lg outline-none">
                                 <option value="0" data-label="None">None</option>
                                 <option value="15" data-label="Chicken">Chicken</option>
                                 <option value="15" data-label="Steak">Steak</option>
                                 <option value="15" data-label="Shrimp">Shrimp</option>
                                 <option value="15" data-label="Salmon">Salmon</option>
-                                <option value="15" data-label="Scallops">Scallops</option>
-                                <option value="15" data-label="Tofu">Tofu</option>
                                 <option value="20" data-label="Filet Mignon">Filet (+$20)</option>
                                 <option value="25" data-label="Lobster Tail">Lobster (+$25)</option>
                             </select>
@@ -182,7 +203,6 @@
                     </div>
                 </div>
             `;
-            
             container.appendChild(div);
             calculate();
         }
@@ -196,73 +216,58 @@
             let subtotal = 0;
             const receiptContainer = document.getElementById('receipt-items');
             receiptContainer.innerHTML = '';
-
             const guestRows = document.querySelectorAll('#guest-container > div');
             
             guestRows.forEach((row, index) => {
                 const nameInput = row.querySelector('.guest-name');
                 const name = nameInput.value.trim() || `Guest ${index + 1}`;
-                const typeSelect = row.querySelector('.guest-type');
-                const p1Select = row.querySelector('.protein-1');
-                const p2Select = row.querySelector('.protein-2');
-                const extraSelect = row.querySelector('.extra-protein');
+                const typeS = row.querySelector('.guest-type');
+                const p1S = row.querySelector('.protein-1');
+                const p2S = row.querySelector('.protein-2');
+                const exS = row.querySelector('.extra-protein');
 
-                const basePrice = parseFloat(typeSelect.value);
-                const p1Price = parseFloat(p1Select.value);
-                const p2Price = parseFloat(p2Select.value);
-                const extraPrice = parseFloat(extraSelect.value);
+                const base = parseFloat(typeS.value);
+                const p1 = parseFloat(p1S.value);
+                const p2 = parseFloat(p2S.value);
+                const ex = parseFloat(exS.value);
                 
-                const guestTotal = basePrice + p1Price + p2Price + extraPrice;
-                subtotal += guestTotal;
+                const gTotal = base + p1 + p2 + ex;
+                subtotal += gTotal;
 
-                // Create Receipt Entry
                 const itemEntry = document.createElement('div');
-                itemEntry.className = "receipt-item animate-in fade-in slide-in-from-right-2 duration-300";
+                itemEntry.className = "receipt-item";
                 
-                const p1Label = p1Select.options[p1Select.selectedIndex].getAttribute('data-label');
-                const p2Label = p2Select.options[p2Select.selectedIndex].getAttribute('data-label');
-                const extraLabel = extraSelect.options[extraSelect.selectedIndex].getAttribute('data-label');
-
-                let detailsHtml = `
+                let details = `
                     <div class="flex justify-between items-end mb-1">
                         <span class="font-black text-stone-800 tracking-tight">${name.toUpperCase()}</span>
-                        <span class="font-bold text-stone-900">$${guestTotal.toFixed(2)}</span>
+                        <span class="font-bold text-stone-900">$${gTotal.toFixed(2)}</span>
                     </div>
-                    <div class="space-y-0.5 border-l-2 border-stone-100 pl-3 ml-1">
-                        <div class="text-[10px] text-stone-500 uppercase flex justify-between">
-                            <span>${typeSelect.options[typeSelect.selectedIndex].getAttribute('data-label')} Base</span>
-                            <span>$${basePrice.toFixed(2)}</span>
-                        </div>
-                        <div class="text-[10px] text-stone-400 uppercase flex justify-between italic">
-                            <span>• ${p1Label}</span>
-                            <span>${p1Price > 0 ? '+$' + p1Price.toFixed(2) : 'incl.'}</span>
-                        </div>
-                        <div class="text-[10px] text-stone-400 uppercase flex justify-between italic">
-                            <span>• ${p2Label}</span>
-                            <span>${p2Price > 0 ? '+$' + p2Price.toFixed(2) : 'incl.'}</span>
-                        </div>`;
+                    <div class="space-y-0.5 border-l-2 border-stone-100 pl-3 ml-1 text-[10px] text-stone-500 uppercase">
+                        <div class="flex justify-between"><span>${typeS.options[typeS.selectedIndex].getAttribute('data-label')} Base</span><span>$${base.toFixed(2)}</span></div>
+                        <div class="flex justify-between italic"><span>• ${p1S.options[p1S.selectedIndex].getAttribute('data-label')}</span><span>${p1 > 0 ? '+$' + p1.toFixed(2) : 'incl.'}</span></div>
+                        <div class="flex justify-between italic"><span>• ${p2S.options[p2S.selectedIndex].getAttribute('data-label')}</span><span>${p2 > 0 ? '+$' + p2.toFixed(2) : 'incl.'}</span></div>`;
 
-                if(extraPrice > 0) {
-                    detailsHtml += `
-                        <div class="text-[10px] text-red-600 font-bold uppercase flex justify-between pt-1">
-                            <span>+ ADD'L ${extraLabel}</span>
-                            <span>$${extraPrice.toFixed(2)}</span>
-                        </div>`;
-                }
-
-                detailsHtml += `</div>`;
-                itemEntry.innerHTML = detailsHtml;
+                if(ex > 0) details += `<div class="text-red-600 font-bold flex justify-between pt-1"><span>+ ADD'L ${exS.options[exS.selectedIndex].getAttribute('data-label')}</span><span>$${ex.toFixed(2)}</span></div>`;
+                details += `</div>`;
+                itemEntry.innerHTML = details;
                 receiptContainer.appendChild(itemEntry);
             });
 
             const tax = subtotal * TAX_RATE;
-            const tip = subtotal * TIP_RATE;
-            const total = subtotal + tax + tip;
+            
+            let tip = 0;
+            if (currentTipMode === 'pct') {
+                tip = subtotal * (currentTipValue / 100);
+            } else {
+                tip = parseFloat(document.getElementById('custom-tip-amount').value) || 0;
+            }
+            
+            const grandTotal = subtotal + tax + tip;
 
             document.getElementById('food-subtotal').innerText = `$${subtotal.toFixed(2)}`;
             document.getElementById('tax-display').innerText = `$${tax.toFixed(2)}`;
             document.getElementById('tip-display').innerText = `$${tip.toFixed(2)}`;
-            document.getElementById('grand-total').innerText = `$${total.toFixed(2)}`;
+            document.getElementById('grand-total').innerText = `$${grandTotal.toFixed(2)}`;
         }
 
         function submitRSVP() {
@@ -301,10 +306,9 @@
 
             const subject = encodeURIComponent(`Hibachi RSVP - ${familyName} Family`);
             const body = encodeURIComponent(bodyText);
-            window.location.href = `mailto:kazembe72015@gmail.com?subject=${subject}&body=${body}`;
+            window.location.href = `mailto:${HOST_EMAIL}?subject=${subject}&body=${body}`;
         }
 
-        // Init
         // window.onload = addGuest;
     </script>
 </body>
