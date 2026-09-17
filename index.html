@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jessica Kazembe | Lead Consultant Developer</title>
+    <title>Jessica Kazembe | Lead Consultant Developer & UI Architect</title>
     <meta name="description" content="Portfolio of Jessica Kazembe - Lead Consultant Developer & Tech Lead with 14 years of experience in UI architecture, micro-frontends, full-stack modernizations, and cloud engineering.">
     
     <!-- Tailwind CSS CDN -->
@@ -58,13 +58,48 @@
         .linkedin-icon {
             color: black;
         }
+        .dark .github-icon, .dark .linkedin-icon {
+          filter: invert(1);
+        }
+        .profile-headshot {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .hero-image-wrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          max-width: 320px;
+          margin: auto;
+          padding: 0.5rem;
+          position: absolute;
+          top: 800px;
+          right: 0;
+          left: 0;
+        }
+        #hero {
+            padding-bottom: 200px;
+        }
+        #about {
+            padding-top: 225px;
+        }
         @media (prefers-color-scheme: light) {
           .github-icon, .linkedin-icon {
             filter: invert(1);
           }
         }
-        .dark .github-icon, .dark .linkedin-icon {
-          filter: invert(1);
+        @media (min-width: 768px) {
+          .hero-image-wrapper {
+            max-width: 360px;
+            margin: auto;
+          }
         }
     </style>
 </head>
@@ -112,7 +147,7 @@
         </div>
     </header>
 
-    <main class="pt-16">
+    <main class="pt-16" style="position: relative;">
         <!-- Hero Section -->
         <section id="hero" class="min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 relative overflow-hidden">
             <div class="absolute inset-0 -z-10 opacity-30 dark:opacity-20 bg-[radial-gradient(#0284c7_1px,transparent_1px)] [background-size:16px_16px]"></div>
@@ -143,7 +178,7 @@
                 <!-- Quick Links -->
                 <div class="flex items-center justify-center gap-6 pt-6 text-slate-500 dark:text-slate-400">
                     <a href="https://www.linkedin.com/in/jbrazelton" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors flex items-center gap-1.5 text-sm font-medium">
-                        <img src="images/LinkedIn_icon.svg" class="linkedin-icon" alt="LinkedIn Logo" width="20" height="20"> LinkedIn
+                        <img src="LinkedIn_icon.svg" class="linkedin-icon" alt="LinkedIn Logo" width="20" height="20"> LinkedIn
                     </a>
                     <a href="https://github.com/lynndupree06" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors flex items-center gap-1.5 text-sm font-medium">
                         <img src="https://cdn.simpleicons.org/github" class="github-icon" alt="GitHub Logo" width="20" height="20"> GitHub
@@ -154,6 +189,17 @@
                 </div>
             </div>
         </section>
+
+        <div class="hero-image-wrapper">
+            <img 
+                src="images/profile.png" 
+                alt="Jessica Kazembe - Lead Consultant Developer" 
+                class="profile-headshot" 
+                loading="eager" 
+                width="320" 
+                height="320"
+            />
+        </div>
 
         <!-- About & Philosophy Section -->
         <section id="about" class="py-20 bg-slate-100/60 dark:bg-slate-800/40 border-y border-slate-200 dark:border-slate-800">
@@ -718,7 +764,7 @@
                     <!-- Contact Card: LinkedIn -->
                     <a href="https://www.linkedin.com/in/jbrazelton" target="_blank" rel="noopener noreferrer" class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 shadow-sm text-center space-y-3 hover:border-sky-500 transition-all">
                         <div class="w-12 h-12 mx-auto rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
-                            <img src="images/LinkedIn_icon.svg" class="linkedin-icon" alt="LinkedIn Logo" width="20" height="20">
+                            <img src="LinkedIn_icon.svg" class="linkedin-icon" alt="LinkedIn Logo" width="20" height="20">
                         </div>
                         <h3 class="font-bold text-slate-900 dark:text-white">LinkedIn</h3>
                         <p class="text-xs text-slate-500 dark:text-slate-400">linkedin.com/in/jbrazelton</p>
