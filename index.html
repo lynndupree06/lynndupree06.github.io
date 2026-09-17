@@ -1,128 +1,835 @@
-<html>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <title>Jessica B. Kazembe</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jessica Kazembe | Lead Consultant Developer</title>
+    <meta name="description" content="Portfolio of Jessica Kazembe - Lead Consultant Developer & Tech Lead with 14 years of experience in UI architecture, micro-frontends, full-stack modernizations, and cloud engineering.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            600: '#0369a1',
+                            700: '#075985',
+                            800: '#0c4a6e',
+                            900: '#0f172a'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
 
-  <link href='https://fonts.googleapis.com/css?family=Handlee' rel='stylesheet' type='text/css'>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="css/style.css" rel="stylesheet" type="text/css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #0284c7 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .dark .gradient-text {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .linkedin-icon {
+            color: black;
+        }
+        @media (prefers-color-scheme: light) {
+          .github-icon, .linkedin-icon {
+            filter: invert(1);
+          }
+        }
+        .dark .github-icon, .dark .linkedin-icon {
+          filter: invert(1);
+        }
+    </style>
 </head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 font-sans antialiased selection:bg-sky-500 selection:text-white transition-colors duration-300">
 
-<body ng-app="lynndupree06" ng-controller="HomeController as vm">
-  <section id="intro">
-    <div class="section-wrapper">
-      <h1>Jessica B. Kazembe</h1>
-      <h2>Consultant Developer at ThoughtWorks</h2>
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-header bg-white/80 dark:bg-slate-900/80 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+        <div class="max-w-6xl mx-mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="#hero" class="font-bold text-xl tracking-tight text-slate-900 dark:text-white hover:opacity-80 transition-opacity">
+                Jessica<span class="text-sky-600 dark:text-sky-400">&nbsp;Kazembe</span>
+            </a>
 
-      <div class="social-media">
-        <a href="http://twitter.com/lynndupree06" target="_blank"><i class="fa fa-twitter-square fa-2x"></i></a>
-        <a href="http://facebook.com/jessica.brazelton" target="_blank"><i class="fa fa-facebook-square fa-2x"></i></a>
-        <a href="http://instagram.com/lynndupree06" target="_blank"><i class="fa fa-instagram fa-2x"></i></a>
-        <a href="http://linkedin.com/in/jbrazelton" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
-        <a href="http://github.com/lynndupree06" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
-        <a href="http://technicallyher.com" target="_blank"><i class="fa fa-wordpress fa-2x"></i></a>
-      </div>
-    </div>
-    <div class="image-wrapper">
-      <img src="images/jessica.jpeg"/>
-    </div>
-  </section>
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-600 dark:text-slate-300">
+                <a href="#about" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">About</a>
+                <a href="#experience" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Experience</a>
+                <a href="#engagements" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Engagements</a>
+                <a href="#skills" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Skills</a>
+                <a href="#education" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Education</a>
+                <a href="#contact" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors">Contact</a>
+            </nav>
 
-  <section id="about">
-    <div class="section-wrapper">
-      <h1>About Me</h1>
-      <p>
-        I am very passionate about technology and am excited by solving problems. My background in Computer
-        Science has provided me with several different and unique experiences as a Developer. Additionally,
-        my sense of creativity has often been an asset in the world of technology. I believe in continuous
-        learning, and continual growth as a programmer. Some areas that I enjoy the most are creating Web
-        applications and Mobile applications.
-      </p>
-    </div>
-  </section>
+            <div class="flex items-center space-x-4">
+                <!-- Dark Mode Toggle Button -->
+                <button id="theme-toggle" aria-label="Toggle dark mode" class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+                    <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+                </button>
 
-  <section id="skills">
-    <div class="section-wrapper">
-      <h1>Skills</h1>
+                <!-- Mobile menu toggle button -->
+                <button id="mobile-menu-btn" aria-label="Open navigation menu" class="md:hidden p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                    <i data-lucide="menu" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
 
-      <div class="search-panel">
-        <i class="fa fa-search"></i>
-        <input type="text" ng-model="search"/>
-        <ul class="filters">
-          <li ng-class="{selected:vm.isSelected('language')}"><a href="" ng-click="vm.filter('language')">Languages</a></li>
-          <li ng-class="{selected:vm.isSelected('framework')}"><a href="" ng-click="vm.filter('framework')">Frameworks</a></li>
-          <li ng-class="{selected:vm.isSelected('web')}"><a href="" ng-click="vm.filter('web')">Web Technologies</a></li>
-          <li ng-class="{selected:vm.isSelected('tool')}"><a href="" ng-click="vm.filter('tool')">Tools</a></li>
-          <li ng-class="{selected:vm.isSelected('system')}"><a href="" ng-click="vm.filter('system')">Operating Systems</a></li>
-        </ul>
-      </div>
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">About</a>
+            <a href="#experience" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Experience</a>
+            <a href="#engagements" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Engagements</a>
+            <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Skills</a>
+            <a href="#education" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Education</a>
+            <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Contact</a>
+        </div>
+    </header>
 
-      <ul>
-        <li ng-repeat="s in vm.skills | filter:search | searchFilter:vm.types track by $index">
-          <progress-chart class="progress-chart" skill="s.skill" progress="s.value"></progress-chart>
-          <div>{{s.skill}}</div>
-        </li>
-      </ul>
-    </div>
-  </section>
+    <main class="pt-16">
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 relative overflow-hidden">
+            <div class="absolute inset-0 -z-10 opacity-30 dark:opacity-20 bg-[radial-gradient(#0284c7_1px,transparent_1px)] [background-size:16px_16px]"></div>
+            
+            <div class="max-w-4xl mx-auto text-center space-y-8">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 dark:bg-sky-950/60 border border-sky-200 dark:border-sky-800/80 text-sky-700 dark:text-sky-300 text-xs sm:text-sm font-semibold tracking-wide">
+                    <span class="w-2 h-2 rounded-full bg-sky-500 animate-pulse"></span>
+                    Lead Consultant Developer
+                </div>
 
-  <section id="experience">
-    <div class="section-wrapper">
-      <h1>My Journey</h1>
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+                    Architecting High-Performance <span class="gradient-text">UI Solutions</span> & Scalable Systems
+                </h1>
 
-      <ul id='timeline' style="height: {{vm.yearList.length*80}}px;">
-        <li class='work'
-            style="top: {{$index*70}}px;"
-            ng-repeat="year in vm.yearList track by $index">
-          <div class="relative">
-            <span class='date'>{{year}}</span>
-            <span class='circle'></span>
-          </div>
-          <div class='content'></div>
-        </li>
-        <li class="work present" style="top: {{vm.getPresentPosition()}}px;">
-          <div class="relative">
-            <span class='date'>Present</span>
-            <span class='circle'></span>
-          </div>
-          <div class='content'></div>
-        </li>
-        <li class='work'
-            style="top: {{vm.getPosition(experience.start)}}px;"
-            ng-repeat="experience in vm.experiences track by $index"
-            ng-show="vm.shouldShowExperience(experience)">
-          <input class='radio' id='work{{$index}}' name='works' type='checkbox'
-          ng-click="vm.toggleSelectedExperience(experience)">
-          <div class="relative">
-            <label for='work{{$index}}'>
-              <strong>{{experience.company}}</strong> - {{experience.location}}
-            </label>
-            <span class='date event'>{{vm.getDate(experience.start)}}</span>
-            <span class='circle event'></span>
-          </div>
-          <div class='content'>
-            <p class="title">{{experience.title}}</p>
-            <p class="time">{{experience.start | date:'MMM yyyy'}} - {{experience.end | date:'MMM yyyy'}}</p>
-            <p>{{experience.description}}</p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  </section>
+                <p class="text-lg sm:text-xl text-slate-600 dark:text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
+                    14 years of engineering leadership at Thoughtworks. Specializing in client-side performance, modular micro-frontend architectures, web accessibility (a11y), and resilient full-stack cloud systems for Fortune 500 enterprises.
+                </p>
 
-  <section id="education">
-    <div class="section-wrapper">
-      <h1>Education</h1>
-    </div>
-  </section>
+                <div class="flex flex-wrap justify-center gap-4 pt-4">
+                    <a href="#engagements" class="px-6 py-3.5 rounded-xl bg-sky-600 hover:bg-sky-700 text-white font-semibold shadow-lg shadow-sky-500/25 transition-all flex items-center gap-2">
+                        View Engagements <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#contact" class="px-6 py-3.5 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-900 dark:text-white font-semibold transition-all">
+                        Get In Touch
+                    </a>
+                </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular.min.js" type="text/javascript"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js" type="text/javascript"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js" type="text/javascript"></script>
-  <script src="scripts/app.js"></script>
-  <script src="scripts/home.controller.js"></script>
-  <script src="scripts/search.filter.js"></script>
-  <script src="scripts/progress.bar.directive.js"></script>
+                <!-- Quick Links -->
+                <div class="flex items-center justify-center gap-6 pt-6 text-slate-500 dark:text-slate-400">
+                    <a href="https://www.linkedin.com/in/jbrazelton" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors flex items-center gap-1.5 text-sm font-medium">
+                        <img src="images/LinkedIn_icon.svg" class="linkedin-icon" alt="LinkedIn Logo" width="20" height="20"> LinkedIn
+                    </a>
+                    <a href="https://github.com/lynndupree06" target="_blank" rel="noopener noreferrer" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors flex items-center gap-1.5 text-sm font-medium">
+                        <img src="https://cdn.simpleicons.org/github" class="github-icon" alt="GitHub Logo" width="20" height="20"> GitHub
+                    </a>
+                    <a href="mailto:jessica.b.kazembe@gmail.com" class="hover:text-sky-600 dark:hover:text-sky-400 transition-colors flex items-center gap-1.5 text-sm font-medium">
+                        <i data-lucide="mail" class="w-5 h-5"></i> Email
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About & Philosophy Section -->
+        <section id="about" class="py-20 bg-slate-100/60 dark:bg-slate-800/40 border-y border-slate-200 dark:border-slate-800">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center space-y-3 mb-12">
+                    <h2 class="text-xs uppercase tracking-widest text-sky-600 dark:text-sky-400 font-bold">Engineering Leadership</h2>
+                    <p class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Technical Excellence & Philosophy</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center">
+                            <i data-lucide="layout-grid" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Modular UI Architecture</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Pioneering scalable Micro-Frontend systems using React, Redux, and Next.js. Designing decoupled, high-performance UI layers for low-latency client environments.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Accessibility & TDD Discipline</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Enforcing WCAG (a11y) accessibility standards across digital platforms and embedding strict Test-Driven Development (TDD) principles to ensure zero-downtime releases.
+                        </p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200/80 dark:border-slate-700/80 shadow-sm space-y-4">
+                        <div class="w-12 h-12 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                            <i data-lucide="users" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white">Context, Not Control</h3>
+                        <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            Guiding cross-functional consultant-client engineering pods by setting clear architectural guardrails, team delivery norms, and fostering autonomous engineering talent.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Career Progression Timeline -->
+        <section id="experience" class="py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center space-y-3 mb-16">
+                    <h2 class="text-xs uppercase tracking-widest text-sky-600 dark:text-sky-400 font-bold">14 Years of Experience</h2>
+                    <p class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">My Journey</p>
+                </div>
+
+                <div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-4 sm:ml-32 space-y-12">
+                    
+                    <!-- Lead Consultant / Tech Lead -->
+                    <div class="relative pl-8 sm:pl-10">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-600 border-4 border-white dark:border-slate-900"></div>
+                        <div class="hidden sm:block absolute -left-32 top-1 text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
+                            2022 – Present
+                        </div>
+                        <div class="sm:hidden mb-2 text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">
+                            2022 – Present
+                        </div>
+                        <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Lead Consultant / Tech Lead</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold">Thoughtworks • Remote</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Guiding full-stack engineering delivery, architectural guardrails, and team norms across hybrid consultant-client pods. Serving as Tech Lead modernizing enterprise platforms (React, Java, AWS) and refactoring microservices for luxury automotive (Java, Spring Boot) and consumer technology (Kotlin) clients.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-sky-50 dark:bg-sky-950 text-sky-700 dark:text-sky-300 border border-sky-200 dark:border-sky-800">Tech Lead</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">React</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Java</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Spring Boot</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Kotlin</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">AWS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Senior Consultant -->
+                    <div class="relative pl-8 sm:pl-10">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-400 dark:bg-slate-600 border-4 border-white dark:border-slate-900"></div>
+                        <div class="hidden sm:block absolute -left-32 top-1 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            2019 – 2022
+                        </div>
+                        <div class="sm:hidden mb-2 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            2019 – 2022
+                        </div>
+                        <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Senior Consultant / Tech Lead</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold">Thoughtworks • Remote</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Promoted to Tech Lead within 3 months on a high-traffic e-commerce search & discovery platform utilizing Micro-Frontends (React, Redux, a11y, TDD). Delivered front-end web transformations for <strong class="text-slate-900 dark:text-white font-semibold">a major restaurant chain</strong> (React, Next.js, GraphQL) and built an aircraft fleet maintenance tracking platform for <strong class="text-slate-900 dark:text-white font-semibold">a major U.S. airline</strong> (Java, Spring Boot, AWS, Kubernetes).
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-indigo-50 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">Micro-Frontends</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">React</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Next.js</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">GraphQL</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">a11y</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Kubernetes</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Consultant -->
+                    <div class="relative pl-8 sm:pl-10">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900"></div>
+                        <div class="hidden sm:block absolute -left-32 top-1 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            2015 – 2019
+                        </div>
+                        <div class="sm:hidden mb-2 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            2015 – 2019
+                        </div>
+                        <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Consultant Developer</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold">Thoughtworks • Dallas, TX</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Delivered full-stack modernizations across Mortgage Lending (<strong class="text-slate-900 dark:text-white font-semibold">a leading mortgage institution</strong>), Grocery, Food Distribution, Healthcare, and Hedge Fund clients. Engineered scalable microservices, REST APIs, and responsive UIs with Java, Kotlin, Groovy, Dropwizard, Angular, and React while promoting TDD, clean code, and CI/CD pipelines.
+                            </p>
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Java</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Spring Boot</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">Kotlin</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">REST APIs</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">TDD</span>
+                                <span class="px-2 py-0.5 rounded text-xs font-medium bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300">CI/CD</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Graduate Consultant -->
+                    <div class="relative pl-8 sm:pl-10">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900"></div>
+                        <div class="hidden sm:block absolute -left-32 top-1 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            2014 – 2015
+                        </div>
+                        <div class="sm:hidden mb-2 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            2014 – 2015
+                        </div>
+                        <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Graduate Consultant</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold">Thoughtworks • Sydney, Australia</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Contributed to enterprise web and mobile applications for Data Networking, Financial Services, and Non-Profit clients. Built single-page applications and mobile components using Ruby on Rails, Backbone, Angular, iOS, and Java Spring MVC.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 sm:pl-10">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900"></div>
+                        <div class="hidden sm:block absolute -left-32 top-1 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            2012 - 2013
+                        </div>
+                        <div class="sm:hidden mb-2 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            2012 - 2013
+                        </div>
+                        <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Business Technology Officer</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold">Suncorp • Sydney, Australia</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Worked within an Agile software development team as a software developer.Contributed to front end web development for Java applications andcreated native mobile applications across multiple platforms using Xamarintechnologies. Also, developed small enhancements to multiple webapplications for personal insurance brands that brought large business value.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 sm:pl-10">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900"></div>
+                        <div class="hidden sm:block absolute -left-32 top-1 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            Summer 2011
+                        </div>
+                        <div class="sm:hidden mb-2 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            Summer 2011
+                        </div>
+                        <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Web Developer</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold">INgage Networks • Atlanta, GA</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Helped implement a new document sharing platform built inside a webapplication. This included creating unit tests and front end development whileworking in an agile environment. The technologies used include: Visual Studio,C#, JUnit, Javascript, HTML, and ASP.NET MVC.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 sm:pl-10">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900"></div>
+                        <div class="hidden sm:block absolute -left-32 top-1 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            Summer 2010
+                        </div>
+                        <div class="sm:hidden mb-2 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            Summer 2010
+                        </div>
+                        <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Software Developer</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold">Johns Hopkins University Applied Physics Laboratory • Laurel, MD</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Implemented a tool to display backend data in a graphical form. This includedcreating a GUI for the user to input data, querying a database based off ofthe users input, and displaying data from the database onto four differenttwo dimensional graphs. In addition to that, created a geographical interfaceto display that same data but onto a map. This interface had a timer thatwhile running, the information on the map would change based of of thecurrent time, and display the relevant data, based on that given time, from thedatabase. The technologies used include: Eclipse, Java, iBatis, and OpenMapAPI.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 sm:pl-10">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900"></div>
+                        <div class="hidden sm:block absolute -left-32 top-1 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            Summer 2009
+                        </div>
+                        <div class="sm:hidden mb-2 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            Summer 2009
+                        </div>
+                        <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Web Developer</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold">Xerox • Rochester, NY</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Helped implement a new internal web application for submitting softwarebuilds. This included working on a Scrum team, creating the front endinterface, and querying the database to populate the page with content. Thetechnologies used include: IntelliJ, Java, HTML, CSS, Hibernate and GoogleWeb Toolkit.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 sm:pl-10">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900"></div>
+                        <div class="hidden sm:block absolute -left-32 top-1 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            Summer 2008
+                        </div>
+                        <div class="sm:hidden mb-2 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            Summer 2008
+                        </div>
+                        <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Software Developer</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold">Lockheed Martin • Fairfax, VA</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Helped implement a new social interacting tool for government intelligenceagencies. This included working on a decision mapping application, aninteractive Google map interface, and a detailed user guide of how to use theoverall system. The technologies used include: Eclipse, Java and Javascript.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="relative pl-8 sm:pl-10">
+                        <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-slate-300 dark:bg-slate-700 border-4 border-white dark:border-slate-900"></div>
+                        <div class="hidden sm:block absolute -left-32 top-1 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            Summer 2007
+                        </div>
+                        <div class="sm:hidden mb-2 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            Summer 2007
+                        </div>
+                        <div class="bg-white dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-3">
+                            <div class="flex flex-wrap items-center justify-between gap-2">
+                                <h3 class="text-xl font-bold text-slate-900 dark:text-white">Web Developer</h3>
+                                <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-semibold">Jet Propulsion Laboratory • Pasadena, CA</span>
+                            </div>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Implemented a website and wiki site for the Multi-Mission (MGSS) InstrumentOperations Subsystem (IOS) team. This included setting up a server, gatheringcontent from relevant team members, and creating front end interface.Furthermore, I was instrumental in introducing a more intuitive and relevantwebsite for my team. The technologies used include: HTML, CSS, andTomcat.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Client Engagements Section -->
+        <section id="engagements" class="py-20 bg-slate-100/60 dark:bg-slate-800/40 border-y border-slate-200 dark:border-slate-800">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center space-y-3 mb-16">
+                    <h2 class="text-xs uppercase tracking-widest text-sky-600 dark:text-sky-400 font-bold">Featured Engagements</h2>
+                    <p class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Enterprise Transformations & Impact</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+
+                    <!-- Engagement: Luxury Automotive Backend -->
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm flex flex-col justify-between space-y-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">May 2025 – Aug 2025</span>
+                                <span class="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold">Backend Architect</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Major Luxury Automotive Manufacturer</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Refactored legacy system services into clean, high-performance microservices using Java and Spring Boot. Defined robust API contracts and system resilience patterns across enterprise infrastructure.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-700/60">
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Java</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Spring Boot</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Microservices</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Engagement: Agricultural & Construction -->
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm flex flex-col justify-between space-y-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Feb 2023 – Oct 2024</span>
+                                <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-xs font-semibold">Tech Lead</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Major Agricultural & Construction Enterprise</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Spearheaded full-stack engineering modernizing a core dealership inventory system and shipment claims reconciliation engine. Defined cloud architectural integration patterns connecting cloud front-ends with legacy backend systems using AWS, React, Redux, Java, and Spring Boot.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-700/60">
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">React</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Redux</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Java</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Spring Boot</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">AWS</span>
+                        </div>
+                    </div>
+
+                    <!-- Engagement: Retail Search & Discovery -->
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm flex flex-col justify-between space-y-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Jun 2021 – Dec 2022</span>
+                                <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 text-xs font-semibold">Tech Lead</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Major Retail E-Commerce Enterprise</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Promoted to Tech Lead within 3 months; led front-end engineering for high-traffic e-commerce search and discovery within a Micro-Frontend architecture. Enforced WCAG web accessibility (a11y) standards, facilitated cross-vendor sprint planning, and optimized rendering performance.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-700/60">
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Micro-Frontends</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">React</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Redux</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">a11y / WCAG</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">TDD</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Engagement: Major Restaurant Chain -->
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm flex flex-col justify-between space-y-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">May 2020 – Feb 2021</span>
+                                <span class="px-2.5 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 text-xs font-semibold">Senior UI Developer</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Major Restaurant Enterprise</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Delivered front-end web application transformations utilizing React, Next.js, and GraphQL. Enabled multi-platform gradual migrations with zero-downtime releases, optimizing page load times and conversion flows for high-traffic customer ordering systems.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-700/60">
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">React</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Next.js</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">GraphQL</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Node.js</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">TDD</span>
+                        </div>
+                    </div>
+
+                    <!-- Engagement: Major U.S. Airline -->
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm flex flex-col justify-between space-y-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">May 2019 – Mar 2020</span>
+                                <span class="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold">Full Stack Developer</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Major U.S. Airline Enterprise</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Engineered an aircraft fleet maintenance tracking platform utilizing React, Java, Spring Boot, AWS, and Kubernetes. Onboarded and mentored client engineering teams in modern agile methodologies, continuous integration, and cloud-native practices.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-700/60">
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">React</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Java</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Spring Boot</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">AWS</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Kubernetes</span>
+                        </div>
+                    </div>
+
+                    <!-- Engagement: Major Mortgage Lending Client -->
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm flex flex-col justify-between space-y-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-semibold text-sky-600 dark:text-sky-400 uppercase tracking-wider">Jan 2018 – Mar 2019</span>
+                                <span class="px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-semibold">Full Stack Developer</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Major Mortgage Lending Enterprise</h3>
+                            <p class="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                Built internal API microservices and customer-facing mortgage servicing interfaces using React, Redux, Java, and Spring Boot. Championed Test-Driven Development (TDD) discipline and automated CI/CD deployment pipelines.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-700/60">
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">React</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Redux</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Java</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">Spring Boot</span>
+                            <span class="text-xs font-mono px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-700 dark:text-slate-300">CI/CD</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Skills Section -->
+        <section id="skills" class="py-20">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center space-y-3 mb-16">
+                    <h2 class="text-xs uppercase tracking-widest text-sky-600 dark:text-sky-400 font-bold">Capabilities & Stack</h2>
+                    <p class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Technical Skills & Expertise</p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    
+                    <!-- Skill Column 1: Frontend & UI -->
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center font-bold">
+                            <i data-lucide="code" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-lg">Frontend & UI</h3>
+                        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> React / Redux / Next.js</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> Micro-Frontend Architecture</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> Web Accessibility (a11y / WCAG)</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> JavaScript (ES6+) / TypeScript</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> GraphQL / REST APIs</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> HTML5 / CSS3 / Less / Sass</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sky-500"></span> Angular / Backbone.js</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Column 2: Backend & Microservices -->
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold">
+                            <i data-lucide="server" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-lg">Backend & APIs</h3>
+                        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> Java / Spring Boot</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> Kotlin / Dropwizard</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> Node.js / Express</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> Microservices Architecture</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> Ruby on Rails / C# / C++</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span> PostgreSQL / MySQL</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Column 3: Cloud & DevOps -->
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">
+                            <i data-lucide="cloud" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-lg">Cloud & Infrastructure</h3>
+                        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Amazon Web Services (AWS)</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Kubernetes / Container Orchestration</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> CI/CD (Jenkins, CircleCI, GoCD)</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Git / GitHub Actions</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Zero-Downtime Deployments</li>
+                        </ul>
+                    </div>
+
+                    <!-- Skill Column 4: Leadership & Practices -->
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-4">
+                        <div class="w-10 h-10 rounded-lg bg-purple-100 dark:bg-purple-950 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold">
+                            <i data-lucide="award" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-lg">Practices & Lead</h3>
+                        <ul class="space-y-2 text-sm text-slate-600 dark:text-slate-300">
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Tech Leadership & Pod Norms</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Test-Driven Development (TDD)</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Pair Programming & Code Reviews</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Agile / Scrum / Kanban</li>
+                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-purple-500"></span> Context, Not Control Methodology</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Credentials Section -->
+        <section id="education" class="py-20 bg-slate-100/60 dark:bg-slate-800/40 border-y border-slate-200 dark:border-slate-800">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center space-y-3 mb-16">
+                    <h2 class="text-xs uppercase tracking-widest text-sky-600 dark:text-sky-400 font-bold">Academic Background</h2>
+                    <p class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Education & Credentials</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    
+                    <!-- Georgia Tech -->
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-sky-100 dark:bg-sky-950 text-sky-700 dark:text-sky-300 text-xs font-semibold">Graduate Level</span>
+                            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Atlanta, GA</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Georgia Institute of Technology</h3>
+                            <p class="text-sm font-semibold text-sky-600 dark:text-sky-400">Graduate Coursework in Computer Science</p>
+                        </div>
+                        <div class="space-y-2 text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-700/60 pt-4">
+                            <p><strong>Specialization:</strong> Software Methodology & Engineering</p>
+                            <p><strong>Core Focus Areas:</strong> Software Development Process, Software Analysis & Testing, Distributed Systems.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tuskegee University -->
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-sm space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 text-xs font-semibold">GPA: 3.55 / 4.0</span>
+                            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Tuskegee, AL</span>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-slate-900 dark:text-white">Tuskegee University</h3>
+                            <p class="text-sm font-semibold text-sky-600 dark:text-sky-400">B.S. in Computer Science & B.A. in Mathematics</p>
+                        </div>
+                        <div class="space-y-2 text-sm text-slate-600 dark:text-slate-300 border-t border-slate-100 dark:border-slate-700/60 pt-4">
+                            <p><strong>Honors & Fellowships:</strong> GEM Fellow, Raytheon Scholar, Tuskegee University Merit Scholar.</p>
+                            <p><strong>Leadership & Societies:</strong> ACM Chapter President, Upsilon Pi Epsilon (CS Honor Society), Pi Mu Epsilon (Math Honor Society), Alpha Kappa Mu (Honor Society).</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center space-y-3 mb-16">
+                    <h2 class="text-xs uppercase tracking-widest text-sky-600 dark:text-sky-400 font-bold">Connect & Collaborate</h2>
+                    <p class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white">Get In Touch</p>
+                    <p class="text-slate-600 dark:text-slate-300 max-w-xl mx-auto text-sm">
+                        Interested in technical consulting, architecture discussions, or potential leadership opportunities? Feel free to connect directly.
+                    </p>
+                </div>
+
+                <div class="grid sm:grid-cols-3 gap-6 mb-12">
+                    
+                    <!-- Contact Card: Email -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 shadow-sm text-center space-y-3">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 flex items-center justify-center">
+                            <i data-lucide="mail" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 dark:text-white">Email Direct</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 break-all">jessica.b.kazembe@gmail.com</p>
+                        <button onclick="copyEmail()" class="inline-flex items-center gap-1 text-xs font-semibold text-sky-600 dark:text-sky-400 hover:underline">
+                            <i data-lucide="copy" class="w-3.5 h-3.5"></i> <span id="copy-text">Copy Email</span>
+                        </button>
+                    </div>
+
+                    <!-- Contact Card: LinkedIn -->
+                    <a href="https://www.linkedin.com/in/jbrazelton" target="_blank" rel="noopener noreferrer" class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 shadow-sm text-center space-y-3 hover:border-sky-500 transition-all">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-indigo-100 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+                            <img src="images/LinkedIn_icon.svg" class="linkedin-icon" alt="LinkedIn Logo" width="20" height="20">
+                        </div>
+                        <h3 class="font-bold text-slate-900 dark:text-white">LinkedIn</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">linkedin.com/in/jbrazelton</p>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400">
+                            Connect Profile <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                        </span>
+                    </a>
+
+                    <!-- Contact Card: Location -->
+                    <div class="p-6 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700/80 shadow-sm text-center space-y-3">
+                        <div class="w-12 h-12 mx-auto rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                            <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-900 dark:text-white">Location</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400">Forney, TX • Dallas–Fort Worth</p>
+                        <span class="inline-block text-xs font-semibold text-emerald-600 dark:text-emerald-400">Remote</span>
+                    </div>
+
+                </div>
+
+                <!-- Toast Notification for Email Copy -->
+                <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-3 rounded-xl shadow-xl flex items-center gap-2 text-sm font-medium">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 dark:text-emerald-600"></i> Email copied to clipboard!
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-slate-900 text-slate-400 text-xs border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>© 2026 Jessica Kazembe. All rights reserved.</p>
+            <div class="flex items-center space-x-6">
+                <a href="#about" class="hover:text-white transition-colors">About</a>
+                <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+                <a href="#engagements" class="hover:text-white transition-colors">Engagements</a>
+                <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+                <a href="#education" class="hover:text-white transition-colors">Education</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+
+        // Theme Toggle Functionality
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        
+        // Check local storage or system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+
+        themeToggleBtn.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Copy Email to Clipboard Handler
+        function copyEmail() {
+            const email = "jessica.b.kazembe@gmail.com";
+            
+            // Clipboard fallback logic
+            const tempInput = document.createElement("input");
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            // Update button label feedback
+            const copyText = document.getElementById("copy-text");
+            copyText.textContent = "Copied!";
+            
+            // Show toast
+            const toast = document.getElementById("toast");
+            toast.classList.remove("translate-y-20", "opacity-0");
+            toast.classList.add("translate-y-0", "opacity-100");
+
+            setTimeout(() => {
+                copyText.textContent = "Copy Email";
+                toast.classList.remove("translate-y-0", "opacity-100");
+                toast.classList.add("translate-y-20", "opacity-0");
+            }, 3000);
+        }
+    </script>
 </body>
-
 </html>
